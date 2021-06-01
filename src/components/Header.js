@@ -2,10 +2,17 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import { selectCar, selectCars } from "../features/car/CarSlice";
+import { useSelector } from "react-redux";
+
+
 function Header() {
     
     const [burgerStatus, setBurgerStatus] = useState(false);
-    
+     
+    const cars = useSelector(selectCars)
+    console.log(cars);
+
     return (
         <Container>
             <a>
@@ -13,12 +20,19 @@ function Header() {
             </a>
         
             <Menu>
-<p><a href="#">model S</a></p>
+
+{cars && cars.map((car, index) =>(
+    <a key={index} href="#" >{car}</a>
+) )}
+
+
+
+{/* <p><a href="#">model S</a></p>
 <p><a href="#">model 3</a></p>
 <p><a href="#">model X</a></p>
 <p><a href="#">model Y</a></p>
 <p><a href="#">Solar roof</a></p>
-<p><a href="#">solar panels</a></p>
+<p><a href="#">solar panels</a></p> */}
 
 
             </Menu>
@@ -34,15 +48,21 @@ function Header() {
 <CustomClose onClick={() => setBurgerStatus(false)} />
 </CloseWrapper>
 
-<li><a href="#">class s</a></li>
+
+{cars && cars.map((car, index) =>(
+    <li key={index}><a href="#" >{car}</a></li>
+) )}
+
+
+{/* <li><a href="#">class s</a></li>
 <li><a href="#">class 3</a></li>
 <li><a href="#">class y</a></li>
-<li><a href="#">class x</a></li>
+<li><a href="#">class x</a></li> */}
 <li><a href="#">Existing Inventory</a></li>
-<li><a href="#">Existing Inventory</a></li>
-<li><a href="#">Existing Inventory</a></li>
-<li><a href="#">Existing Inventory</a></li>
-<li><a href="#">Existing Inventory</a></li>
+<li><a href="#">Used Inventory</a></li>
+<li><a href="#">Trade-in</a></li>
+<li><a href="#">Cybertruck</a></li>
+<li><a href="#">Roadaster</a></li>
 
 
 
