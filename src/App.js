@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { CarSlice } from './features/car/CarSlice';
 import './App.css';
 import Home from './components/Home';
 
